@@ -1,0 +1,9 @@
+{
+  "issueKeyTestcaseValues": {},
+  "testManagerBasePath": "https://cloud.uipath.com/ciscomdkfbqu/POC/testmanager_/",
+  "defaultProject": {
+    "id": "17dc4849-431c-0000-3e85-0b453912eda9",
+    "name": "Salesforce",
+    "key": "SFDC"
+  }
+}

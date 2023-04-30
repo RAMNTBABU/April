@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="create_issue" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="600.6666666666666,450.6666666666667" sap2010:WorkflowViewState.IdRef="create_issue_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ubt="clr-namespace:UiPath.BAF.Telemetry;assembly=UiPath.Jira" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uja="clr-namespace:UiPath.Jira.Activities;assembly=UiPath.Jira.Activities" xmlns:usa="clr-namespace:UiPath.Shared.Activities;assembly=UiPath.Jira.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="create_issue" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="883.3333333333334,1124.6666666666667" sap2010:WorkflowViewState.IdRef="create_issue_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:aj="clr-namespace:Atlassian.Jira;assembly=Atlassian.Jira" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ubt="clr-namespace:UiPath.BAF.Telemetry;assembly=UiPath.Jira" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uibi="http://schemas.uipath.com/workflow/infrastructure/baf/uibi" xmlns:uiisi="http://schemas.uipath.com/workflow/infrastructure/is/uiisi" xmlns:uja="clr-namespace:UiPath.Jira.Activities;assembly=UiPath.Jira.Activities" xmlns:ujia="clr-namespace:UiPath.Jira.IntegrationService.Activities;assembly=UiPath.Jira.IntegrationService.Activities" xmlns:ujic="clr-namespace:UiPath.Jira.IntegrationService.Client;assembly=UiPath.Jira.IntegrationService" xmlns:usa="clr-namespace:UiPath.Shared.Activities;assembly=UiPath.Jira.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -36,6 +36,15 @@
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>UiPath.Jira.Activities.Activities</x:String>
       <x:String>System.Net</x:String>
+      <x:String>UiPath.BAF.Infrastructure.Entity</x:String>
+      <x:String>UiPath.BAF.Infrastructure.Enums</x:String>
+      <x:String>UiPath.BAF.Infrastructure.Telemetry</x:String>
+      <x:String>UiPath.BAF.Infrastructure</x:String>
+      <x:String>UiPath.BAF.Infrastructure.Connection</x:String>
+      <x:String>UiPath.Jira.IntegrationService.Activities</x:String>
+      <x:String>UiPath.IntegrationCore.Activities</x:String>
+      <x:String>UiPath.BAF.Activities</x:String>
+      <x:String>UiPath.BAF.Infrastructure.Contracts</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -91,53 +100,60 @@
       <AssemblyReference>System.Net.Requests</AssemblyReference>
       <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
       <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
+      <AssemblyReference>UiPath.BAF.Infrastructure</AssemblyReference>
+      <AssemblyReference>UiPath.Jira.IntegrationService.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="610.6666666666666,386" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence sap:VirtualizedContainerService.HintSize="574,1060" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ss:SecureString" Name="strAPI" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="548.6666666666666,275.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="512,164.66666666666666" sap2010:WorkflowViewState.IdRef="CommentOut_2">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="512,195.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="create_issue" sap:VirtualizedContainerService.HintSize="450,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="ss:SecureString" Name="strAPI" />
-            </Sequence.Variables>
+          <Sequence DisplayName="Approach 1" sap:VirtualizedContainerService.HintSize="496,290" sap2010:WorkflowViewState.IdRef="Sequence_7">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="484,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="ss:SecureString">[strAPI]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="ss:SecureString">[New System.Net.NetworkCredential(String.Empty,"").SecurePassword]</InArgument>
+                <InArgument x:TypeArguments="ss:SecureString">[New System.Net.NetworkCredential(String.Empty,"ATATT3xFfGF0Ya5F92iJVjkISyQx4DXFHX5RDW6a46rGtrcLeUsHdmuT-Dbby_MWOnoiybrcc0h7mSjkAbNxYNnQX0CtA7kiXEaNCDk0RO4NLImr21Ivam3_kcKefolNUJsG_wyQMiKBay0AcwRmmikuVbKS7PyFxC9aMjc7aYMMbetzY__3b0Q=67B513EB").SecurePassword]</InArgument>
               </Assign.Value>
             </Assign>
-            <uja:JiraScope ClientID="{x:Null}" ClientSecret="{x:Null}" Connection="{x:Null}" ContinueOnError="{x:Null}" JiraConnection="{x:Null}" ApiToken="[strAPI]" AuthenticationType="Api Token" DisplayName="Jira Scope" sap:VirtualizedContainerService.HintSize="484,432.6666666666667" sap2010:WorkflowViewState.IdRef="JiraScope_1" ServerURL="https://jirauipath.atlassian.net/" UserName="ramntsundar@gmail.com">
+            <uja:JiraScope ClientID="{x:Null}" ClientSecret="{x:Null}" Connection="{x:Null}" ContinueOnError="{x:Null}" JiraConnection="{x:Null}" ApiToken="[strAPI]" AuthenticationType="Api Token" DisplayName="Jira Scope" sap:VirtualizedContainerService.HintSize="434,54" sap2010:WorkflowViewState.IdRef="JiraScope_1" ServerURL="https://jirauipath.atlassian.net/" UserName="ramntsundar@gmail.com">
               <uja:JiraScope.Body>
                 <ActivityAction x:TypeArguments="usa:IObjectContainer">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="usa:IObjectContainer" Name="ScopeActivity" />
                   </ActivityAction.Argument>
                   <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,345.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="aj:Issue" Name="IssueKey" />
+                    </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <uja:CreateIssue Components="{x:Null}" ContinueOnError="{x:Null}" CustomFields="{x:Null}" Issue="{x:Null}" IssueDescription="{x:Null}" IssueSummary="{x:Null}" IssueType="{x:Null}" ParentIssueKey="{x:Null}" ProjectKey="{x:Null}" DisplayName="Create Issue" sap:VirtualizedContainerService.HintSize="388,234.66666666666666" sap2010:WorkflowViewState.IdRef="CreateIssue_1">
+                    <uja:CreateIssue Components="{x:Null}" ContinueOnError="{x:Null}" CustomFields="{x:Null}" ParentIssueKey="{x:Null}" DisplayName="Create Issue" sap:VirtualizedContainerService.HintSize="388,234.66666666666666" sap2010:WorkflowViewState.IdRef="CreateIssue_1" Issue="[IssueKey]" IssueDescription="Bug 4" IssueSummary="Bug-4" IssueType="Bug" ProjectKey="SFDC">
                       <uja:CreateIssue.AdditionalFields>
                         <scg:Dictionary x:TypeArguments="x:String, InArgument" />
                       </uja:CreateIssue.AdditionalFields>
@@ -151,10 +167,382 @@
               <uja:JiraScope.TelemetryProperties>
                 <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
               </uja:JiraScope.TelemetryProperties>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </uja:JiraScope>
           </Sequence>
         </Sequence>
       </ui:CommentOut.Body>
     </ui:CommentOut>
+    <Sequence DisplayName="Approach 2" sap:VirtualizedContainerService.HintSize="512,744.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="create_issue" sap:VirtualizedContainerService.HintSize="450,634" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ujia:CreateIssue BindingsVersion="2.1" BusinessEntityName="Issues" ConfiguredBusinessEntity="curated_issue" ConnectionId="b994e13a-5b8d-4672-a374-8042e931e5fd" Connector="uipath-atlassian-jira" CrudOperation="Create" DesignConnectionEnabled="True" DisplayName="Create Issue" sap:VirtualizedContainerService.HintSize="388,523.3333333333334" sap2010:WorkflowViewState.IdRef="CreateIssue_2">
+          <ujia:CreateIssue.BusinessEntity>
+            <uibi:BusinessEntity Metadata="{x:Reference __ReferenceID0}" Name="curated_issue">
+              <uibi:BusinessEntity.AllFields>
+                <scg:List x:TypeArguments="uibi:EntityField" Capacity="128">
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issue" ArgumentDirection="In" ArgumentType="ujic:Curated_issue" DataType="Curated_issue" Description="The {objectName} object body" DisplayName="Body" FormDataType="ExpressionTextBox" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="True" IsSelected="False" Location="Undefined" Name="body" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" Description="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueFieldsIssuetype" DataType="String" DisplayName="Issue type name" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="True" IsSelected="False" Location="Undefined" Name="body.Fields.Issuetype.Name" Order="1" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueHistoryMetadataActor" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueHistoryMetadataActor" ContainingType="Curated_issueHistoryMetadata" DataType="Curated_issueHistoryMetadataActor" DisplayName="Actor" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Actor" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="scg:IDictionary(x:String, x:Object)" Description="{x:Null}" ArgumentDirection="In" ArgumentType="scg:IDictionary(x:String, x:Object)" ContainingType="Curated_issue" DataType="IDictionary" DisplayName="AdditionalProperties" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.AdditionalProperties" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="scg:ICollection(x:String)" Description="{x:Null}" ArgumentDirection="In" ArgumentType="scg:ICollection(x:String)" ContainingType="Curated_issueTransitionFields" DataType="ICollection" DisplayName="AllowedValues" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Fields.AllowedValues" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" Description="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueFieldsAssignee" DataType="String" DisplayName="Assignee ID" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Assignee.Id" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueFieldsAssignee" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueFieldsAssignee" ContainingType="Curated_issueFields" DataType="Curated_issueFieldsAssignee" DisplayName="Assignee" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Assignee" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueHistoryMetadataCause" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueHistoryMetadataCause" ContainingType="Curated_issueHistoryMetadata" DataType="Curated_issueHistoryMetadataCause" DisplayName="Cause" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Cause" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueFieldsComponents" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueFieldsComponents" ContainingType="Curated_issueFields" DataType="Curated_issueFieldsComponents" DisplayName="Components" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Components" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" Description="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueFields" DataType="String" DisplayName="Description" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Description" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="s:DateTimeOffset" Description="{x:Null}" ArgumentDirection="In" ArgumentType="s:DateTimeOffset" ContainingType="Curated_issueFields" DataType="DateTimeOffset" DisplayName="Due date" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Duedate" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" Description="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueFields" DataType="String" DisplayName="Environment" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Environment" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueFields" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueFields" ContainingType="Curated_issue" DataType="Curated_issueFields" DisplayName="Fields" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueTransitionFields" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueTransitionFields" ContainingType="Curated_issueTransition" DataType="Curated_issueTransitionFields" DisplayName="Fields" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Fields" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueFieldsFixVersions" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueFieldsFixVersions" ContainingType="Curated_issueFields" DataType="Curated_issueFieldsFixVersions" DisplayName="FixVersions" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.FixVersions" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueHistoryMetadataGenerator" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueHistoryMetadataGenerator" ContainingType="Curated_issueHistoryMetadata" DataType="Curated_issueHistoryMetadataGenerator" DisplayName="Generator" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Generator" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadata" DataType="String" Description="The key of the activity described in the history record." DisplayName="History metadata activity description key" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.ActivityDescriptionKey" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadata" DataType="String" Description="The activity described in the history record." DisplayName="History metadata activity description" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.ActivityDescription" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataActor" DataType="String" Description="The URL to an avatar for the user or system associated with a history record." DisplayName="History metadata actor avatar url" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Actor.AvatarUrl" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataActor" DataType="String" Description="The key of the display name of the user or system associated with a history record." DisplayName="History metadata actor display name key" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Actor.DisplayNameKey" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataActor" DataType="String" Description="The display name of the user or system associated with a history record." DisplayName="History metadata actor display name" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Actor.DisplayName" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataActor" DataType="String" Description="The ID of the user or system associated with a history record." DisplayName="History metadata actor ID" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Actor.Id" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataActor" DataType="String" Description="The type of the user or system associated with a history record." DisplayName="History metadata actor type" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Actor.Type" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataActor" DataType="String" Description="The URL of the user or system associated with a history record." DisplayName="History metadata actor url" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Actor.Url" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataCause" DataType="String" Description="The URL to an avatar for the user or system associated with a history record." DisplayName="History metadata cause avatar url" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Cause.AvatarUrl" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataCause" DataType="String" Description="The key of the display name of the user or system associated with a history record." DisplayName="History metadata cause display name key" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Cause.DisplayNameKey" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataCause" DataType="String" Description="The display name of the user or system associated with a history record." DisplayName="History metadata cause display name" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Cause.DisplayName" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataCause" DataType="String" Description="The ID of the user or system associated with a history record." DisplayName="History metadata cause ID" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Cause.Id" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataCause" DataType="String" Description="The type of the user or system associated with a history record." DisplayName="History metadata cause type" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Cause.Type" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataCause" DataType="String" Description="The URL of the user or system associated with a history record." DisplayName="History metadata cause url" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Cause.Url" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadata" DataType="String" Description="The description key of the history record." DisplayName="History metadata description key" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.DescriptionKey" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadata" DataType="String" Description="The description of the history record." DisplayName="History metadata description" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Description" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadata" DataType="String" Description="The description key of the email address associated the history record." DisplayName="History metadata email description key" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.EmailDescriptionKey" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadata" DataType="String" Description="The description of the email address associated the history record." DisplayName="History metadata email description" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.EmailDescription" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataGenerator" DataType="String" Description="The URL to an avatar for the user or system associated with a history record." DisplayName="History metadata generator avatar url" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Generator.AvatarUrl" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataGenerator" DataType="String" Description="The key of the display name of the user or system associated with a history record." DisplayName="History metadata generator display name key" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Generator.DisplayNameKey" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataGenerator" DataType="String" Description="The display name of the user or system associated with a history record." DisplayName="History metadata generator display name" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Generator.DisplayName" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataGenerator" DataType="String" Description="The ID of the user or system associated with a history record." DisplayName="History metadata generator ID" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Generator.Id" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataGenerator" DataType="String" Description="The type of the user or system associated with a history record." DisplayName="History metadata generator type" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Generator.Type" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadataGenerator" DataType="String" Description="The URL of the user or system associated with a history record." DisplayName="History metadata generator url" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Generator.Url" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueHistoryMetadata" DataType="String" Description="The type of the history record." DisplayName="History metadata type" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata.Type" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueHistoryMetadata" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueHistoryMetadata" ContainingType="Curated_issue" DataType="Curated_issueHistoryMetadata" DisplayName="HistoryMetadata" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.HistoryMetadata" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueUpdateIssuelink" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueUpdateIssuelink" ContainingType="Curated_issueUpdate" DataType="Curated_issueUpdateIssuelink" DisplayName="Issuelink" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Update.Issuelink" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueUpdateIssuelinks" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueUpdateIssuelinks" ContainingType="Curated_issueUpdate" DataType="Curated_issueUpdateIssuelinks" DisplayName="Issuelinks" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Update.Issuelinks" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueFieldsIssuetype" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueFieldsIssuetype" ContainingType="Curated_issueFields" DataType="Curated_issueFieldsIssuetype" DisplayName="Issuetype" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Issuetype" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="scg:ICollection(x:String)" Description="{x:Null}" ArgumentDirection="In" ArgumentType="scg:ICollection(x:String)" ContainingType="Curated_issueFields" DataType="ICollection" DisplayName="Labels" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Labels" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueUpdateIssuelinkType" DataType="String" Description="Select or type a relationship for the linked issue." DisplayName="Linked Issue Relationship" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Update.Issuelink.Type.Name" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueUpdateIssuelinkOutwardIssue" DataType="String" Description="The Key of a linked issue." DisplayName="Linked Issue" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Update.Issuelink.OutwardIssue.Key" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueUpdateIssuelinksType" DataType="String" Description="Select or type a relationship for the linked issues." DisplayName="Linked Issues Relationship" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Update.Issuelinks.Type.Name" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueUpdateIssuelinksOutwardIssue" DataType="String" Description="The Key of a linked issues." DisplayName="Linked Issues" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Update.Issuelinks.OutwardIssue.Key" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="scg:ICollection(x:String)" Description="{x:Null}" ArgumentDirection="In" ArgumentType="scg:ICollection(x:String)" ContainingType="Curated_issueTransitionFields" DataType="ICollection" DisplayName="Operations" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Fields.Operations" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueUpdateIssuelinkOutwardIssue" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueUpdateIssuelinkOutwardIssue" ContainingType="Curated_issueUpdateIssuelink" DataType="Curated_issueUpdateIssuelinkOutwardIssue" DisplayName="OutwardIssue" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Update.Issuelink.OutwardIssue" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueUpdateIssuelinksOutwardIssue" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueUpdateIssuelinksOutwardIssue" ContainingType="Curated_issueUpdateIssuelinks" DataType="Curated_issueUpdateIssuelinksOutwardIssue" DisplayName="OutwardIssue" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Update.Issuelinks.OutwardIssue" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" Description="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueFieldsParent" DataType="String" DisplayName="Parent issue key " FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Parent.Key" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueFieldsParent" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueFieldsParent" ContainingType="Curated_issueFields" DataType="Curated_issueFieldsParent" DisplayName="Parent" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Parent" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" Description="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueFieldsPriority" DataType="String" DisplayName="Priority ID" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Priority.Id" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueFieldsPriority" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueFieldsPriority" ContainingType="Curated_issueFields" DataType="Curated_issueFieldsPriority" DisplayName="Priority" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Priority" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" Description="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueFieldsProject" DataType="String" DisplayName="Project ID" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Project.Id" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueFieldsProject" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueFieldsProject" ContainingType="Curated_issueFields" DataType="Curated_issueFieldsProject" DisplayName="Project" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Project" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueProperties" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueProperties" ContainingType="Curated_issue" DataType="Curated_issueProperties" DisplayName="Properties" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Properties" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" Description="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueFieldsReporter" DataType="String" DisplayName="Reporter ID" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Reporter.Id" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueFieldsReporter" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueFieldsReporter" ContainingType="Curated_issueFields" DataType="Curated_issueFieldsReporter" DisplayName="Reporter" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Reporter" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueTransitionFieldsSchema" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueTransitionFieldsSchema" ContainingType="Curated_issueTransitionFields" DataType="Curated_issueTransitionFieldsSchema" DisplayName="Schema" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Fields.Schema" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" Description="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueFieldsSecurity" DataType="String" DisplayName="Security ID" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Security.Id" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueFieldsSecurity" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueFieldsSecurity" ContainingType="Curated_issueFields" DataType="Curated_issueFieldsSecurity" DisplayName="Security" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Security" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueTransitionToStatusCategory" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueTransitionToStatusCategory" ContainingType="Curated_issueTransitionTo" DataType="Curated_issueTransitionToStatusCategory" DisplayName="StatusCategory" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.To.StatusCategory" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" Description="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueFields" DataType="String" DisplayName="Summary" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Summary" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" Description="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueFieldsTimetracking" DataType="String" DisplayName="Timetracking original estimate" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Timetracking.OriginalEstimate" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" Description="{x:Null}" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueFieldsTimetracking" DataType="String" DisplayName="Timetracking remaining estimate" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Timetracking.RemainingEstimate" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueFieldsTimetracking" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueFieldsTimetracking" ContainingType="Curated_issueFields" DataType="Curated_issueFieldsTimetracking" DisplayName="Timetracking" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Timetracking" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueTransitionTo" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueTransitionTo" ContainingType="Curated_issueTransition" DataType="Curated_issueTransitionTo" DisplayName="To" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.To" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransition" DataType="String" Description="Expand options that include additional transition details in the response." DisplayName="Transition expand" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Expand" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionFields" DataType="String" Description="The URL that can be used to automatically complete the field." DisplayName="Transition fields auto complete url" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Fields.AutoCompleteUrl" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionFields" DataType="String" Description="The default value of the field." DisplayName="Transition fields default value" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Fields.DefaultValue" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:Boolean" ArgumentDirection="In" ArgumentType="x:Boolean" ContainingType="Curated_issueTransitionFields" DataType="Boolean" Description="Whether the field has a default value." DisplayName="Transition fields has default value" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Fields.HasDefaultValue" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionFields" DataType="String" Description="The key of the field." DisplayName="Transition fields key" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Fields.Key" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionFields" DataType="String" Description="The name of the field." DisplayName="Transition fields name" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Fields.Name" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:Boolean" ArgumentDirection="In" ArgumentType="x:Boolean" ContainingType="Curated_issueTransitionFields" DataType="Boolean" Description="Whether the field is required." DisplayName="Transition fields required" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Fields.Required" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:Int64" ArgumentDirection="In" ArgumentType="x:Int64" ContainingType="Curated_issueTransitionFieldsSchema" DataType="Int64" Description="If the field is a custom field, the custom ID of the field." DisplayName="Transition fields schema custom ID" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Fields.Schema.CustomId" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionFieldsSchema" DataType="String" Description="If the field is a custom field, the URI of the field." DisplayName="Transition fields schema custom" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Fields.Schema.Custom" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionFieldsSchema" DataType="String" Description="When the data type is an array, the name of the field items within the array." DisplayName="Transition fields schema items" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Fields.Schema.Items" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionFieldsSchema" DataType="String" Description="If the field is a system field, the name of the field." DisplayName="Transition fields schema system" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Fields.Schema.System" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionFieldsSchema" DataType="String" Description="The data type of the field." DisplayName="Transition fields schema type" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Fields.Schema.Type" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:Boolean" ArgumentDirection="In" ArgumentType="x:Boolean" ContainingType="Curated_issueTransition" DataType="Boolean" Description="Whether there is a screen associated with the issue transition." DisplayName="Transition has screen" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.HasScreen" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransition" DataType="String" Description="The ID of the issue transition. Required when specifying a transition to undertake." DisplayName="Transition ID" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Id" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:Boolean" ArgumentDirection="In" ArgumentType="x:Boolean" ContainingType="Curated_issueTransition" DataType="Boolean" Description="Whether the transition is available to be performed." DisplayName="Transition is available" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.IsAvailable" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:Boolean" ArgumentDirection="In" ArgumentType="x:Boolean" ContainingType="Curated_issueTransition" DataType="Boolean" Description="Whether the issue has to meet criteria before the issue transition is applied." DisplayName="Transition is conditional" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.IsConditional" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:Boolean" ArgumentDirection="In" ArgumentType="x:Boolean" ContainingType="Curated_issueTransition" DataType="Boolean" Description="Whether the issue transition is global, that is, the transition is applied to issues regardless of their status." DisplayName="Transition is global" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.IsGlobal" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:Boolean" ArgumentDirection="In" ArgumentType="x:Boolean" ContainingType="Curated_issueTransition" DataType="Boolean" Description="Whether this is the initial issue transition for the workflow." DisplayName="Transition is initial" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.IsInitial" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:Boolean" Description="{x:Null}" ArgumentDirection="In" ArgumentType="x:Boolean" ContainingType="Curated_issueTransition" DataType="Boolean" DisplayName="Transition looped" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Looped" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransition" DataType="String" Description="The name of the issue transition." DisplayName="Transition name" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.Name" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionTo" DataType="String" Description="The description of the status." DisplayName="Transition to description" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.To.Description" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionTo" DataType="String" Description="The URL of the icon used to represent the status." DisplayName="Transition to icon url" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.To.IconUrl" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionTo" DataType="String" Description="The ID of the status." DisplayName="Transition to ID" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.To.Id" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionTo" DataType="String" Description="The name of the status." DisplayName="Transition to name" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.To.Name" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionTo" DataType="String" Description="The URL of the status." DisplayName="Transition to self" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.To.Self" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionToStatusCategory" DataType="String" Description="The name of the color used to represent the status category." DisplayName="Transition to status category color name" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.To.StatusCategory.ColorName" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:Int64" ArgumentDirection="In" ArgumentType="x:Int64" ContainingType="Curated_issueTransitionToStatusCategory" DataType="Int64" Description="The ID of the status category." DisplayName="Transition to status category ID" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.To.StatusCategory.Id" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionToStatusCategory" DataType="String" Description="The key of the status category." DisplayName="Transition to status category key" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.To.StatusCategory.Key" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionToStatusCategory" DataType="String" Description="The name of the status category." DisplayName="Transition to status category name" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.To.StatusCategory.Name" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="x:String" ArgumentDirection="In" ArgumentType="x:String" ContainingType="Curated_issueTransitionToStatusCategory" DataType="String" Description="The URL of the status category." DisplayName="Transition to status category self" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition.To.StatusCategory.Self" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueTransition" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueTransition" ContainingType="Curated_issue" DataType="Curated_issueTransition" DisplayName="Transition" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Transition" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueUpdateIssuelinkType" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueUpdateIssuelinkType" ContainingType="Curated_issueUpdateIssuelink" DataType="Curated_issueUpdateIssuelinkType" DisplayName="Type" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Update.Issuelink.Type" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueUpdateIssuelinksType" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueUpdateIssuelinksType" ContainingType="Curated_issueUpdateIssuelinks" DataType="Curated_issueUpdateIssuelinksType" DisplayName="Type" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Update.Issuelinks.Type" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueUpdate" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueUpdate" ContainingType="Curated_issue" DataType="Curated_issueUpdate" DisplayName="Update" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Update" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issueFieldsVersions" Description="{x:Null}" ArgumentDirection="In" ArgumentType="ujic:Curated_issueFieldsVersions" ContainingType="Curated_issueFields" DataType="Curated_issueFieldsVersions" DisplayName="Versions" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.Fields.Versions" ShouldFilterOnChange="False" />
+                  <uiisi:OperationEntityField x:TypeArguments="ujic:Curated_issue" ArgumentDirection="Out" ArgumentType="ujic:Curated_issue" DataType="Curated_issue" Description="The Issues object returned." DisplayName="Response" FormDataType="ExpressionTextBox" IsChildEntityField="False" IsCustomField="False" IsDefault="False" IsDeletable="True" IsHidden="True" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="Response" ShouldFilterOnChange="False">
+                    <uiisi:OperationEntityField.Metadata>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsPermanentlyHidden">True</x:Boolean>
+                      </scg:Dictionary>
+                    </uiisi:OperationEntityField.Metadata>
+                  </uiisi:OperationEntityField>
+                  <x:Reference>__ReferenceID1</x:Reference>
+                  <x:Reference>__ReferenceID2</x:Reference>
+                  <x:Reference>__ReferenceID3</x:Reference>
+                  <x:Reference>__ReferenceID4</x:Reference>
+                  <x:Reference>__ReferenceID5</x:Reference>
+                  <x:Reference>__ReferenceID6</x:Reference>
+                  <x:Reference>__ReferenceID7</x:Reference>
+                  <x:Reference>__ReferenceID8</x:Reference>
+                  <x:Reference>__ReferenceID9</x:Reference>
+                  <x:Reference>__ReferenceID10</x:Reference>
+                  <x:Reference>__ReferenceID11</x:Reference>
+                  <x:Reference>__ReferenceID12</x:Reference>
+                  <x:Reference>__ReferenceID13</x:Reference>
+                  <x:Reference>__ReferenceID14</x:Reference>
+                  <x:Reference>__ReferenceID15</x:Reference>
+                </scg:List>
+              </uibi:BusinessEntity.AllFields>
+              <uibi:BusinessEntity.EntityMetadata>
+                <uibi:EntityMetadata DisplayName="Issues" EligibleOperations="1" IsCustomEntity="False" Name="curated_issue">
+                  <uibi:EntityMetadata.Metadata>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object" x:Name="__ReferenceID0">
+                      <x:String x:Key="Object">curated_issue</x:String>
+                      <x:String x:Key="Client">UiPath.Jira.IntegrationService.Client.Curated_issueAPIClient</x:String>
+                      <x:String x:Key="Operation">CreateCurated_issue</x:String>
+                      <x:String x:Key="Path">/curated_issue</x:String>
+                    </scg:Dictionary>
+                  </uibi:EntityMetadata.Metadata>
+                </uibi:EntityMetadata>
+              </uibi:BusinessEntity.EntityMetadata>
+              <uibi:BusinessEntity.SelectedFields>
+                <scg:List x:TypeArguments="uibi:EntityField" Capacity="16">
+                  <x:Reference>__ReferenceID1</x:Reference>
+                  <x:Reference>__ReferenceID2</x:Reference>
+                  <x:Reference>__ReferenceID3</x:Reference>
+                  <x:Reference>__ReferenceID4</x:Reference>
+                  <x:Reference>__ReferenceID5</x:Reference>
+                  <x:Reference>__ReferenceID6</x:Reference>
+                  <x:Reference>__ReferenceID7</x:Reference>
+                  <x:Reference>__ReferenceID8</x:Reference>
+                  <x:Reference>__ReferenceID9</x:Reference>
+                  <x:Reference>__ReferenceID10</x:Reference>
+                  <x:Reference>__ReferenceID11</x:Reference>
+                  <x:Reference>__ReferenceID12</x:Reference>
+                  <x:Reference>__ReferenceID13</x:Reference>
+                  <x:Reference>__ReferenceID14</x:Reference>
+                  <x:Reference>__ReferenceID15</x:Reference>
+                </scg:List>
+              </uibi:BusinessEntity.SelectedFields>
+              <uibi:BusinessEntity.TelemetryProperties>
+                <scg:Dictionary x:TypeArguments="uibi:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+              </uibi:BusinessEntity.TelemetryProperties>
+            </uibi:BusinessEntity>
+          </ujia:CreateIssue.BusinessEntity>
+          <ujia:CreateIssue.DesignConnectionRequest>
+            <uiisi:ConnectionParameters AuthType="ElementInstance" ConnectionId="b994e13a-5b8d-4672-a374-8042e931e5fd" ConnectionName="ramntsundar@gmail.com-jirauipath" ConnectorKey="uipath-atlassian-jira">
+              <uiisi:ConnectionParameters.TelemetryInfo>
+                <uiisi:TelemetryInfo ActivityPack="UiPath.Jira.IntegrationService.Activities" ActivityPackVersion="6.0.2" Source="Windows" />
+              </uiisi:ConnectionParameters.TelemetryInfo>
+            </uiisi:ConnectionParameters>
+          </ujia:CreateIssue.DesignConnectionRequest>
+          <ujia:CreateIssue.SelectedFields>
+            <scg:List x:TypeArguments="uibi:EntityField" Capacity="15">
+              <uiisi:OperationEntityField x:TypeArguments="x:String" x:Name="__ReferenceID1" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="Enter the project name or key to begin" DisplayName="Project" FormDataType="ExpressionTextBox" InArgumentValue="SFDC" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="True" IsSelected="False" Location="Undefined" Name="body.Fields.Project.Key" Order="1" ShouldFilterOnChange="False">
+                <uiisi:OperationEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:String">SFDC</InArgument>
+                </uiisi:OperationEntityField.ArgumentValue>
+                <uiisi:OperationEntityField.Metadata>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <uiisi:CustomFieldsPriority x:Key="CustomFieldsPriority">Default</uiisi:CustomFieldsPriority>
+                  </scg:Dictionary>
+                </uiisi:OperationEntityField.Metadata>
+                <uiisi:OperationEntityField.Value>
+                  <Literal x:TypeArguments="x:String">SFDC</Literal>
+                </uiisi:OperationEntityField.Value>
+              </uiisi:OperationEntityField>
+              <uiisi:OperationEntityField x:TypeArguments="x:String" x:Name="__ReferenceID2" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The type of the issue (task, story, bug, epic, etc). Select one to enable custom fields." DisplayName="Issue type" FormDataType="ExpressionTextBox" InArgumentValue="10005" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="True" IsSelected="False" Location="Undefined" Name="body.Fields.Issuetype.Id" Order="1" ShouldFilterOnChange="False">
+                <uiisi:OperationEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:String">10005</InArgument>
+                </uiisi:OperationEntityField.ArgumentValue>
+                <uiisi:OperationEntityField.Metadata>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <uiisi:CustomFieldsPriority x:Key="CustomFieldsPriority">Default</uiisi:CustomFieldsPriority>
+                  </scg:Dictionary>
+                </uiisi:OperationEntityField.Metadata>
+                <uiisi:OperationEntityField.Value>
+                  <Literal x:TypeArguments="x:String">10005</Literal>
+                </uiisi:OperationEntityField.Value>
+              </uiisi:OperationEntityField>
+              <uiisi:OperationEntityField x:TypeArguments="x:String" x:Name="__ReferenceID3" ArgumentDirection="Out" ArgumentType="x:String" DataType="String" Description="The ID of the issue." DisplayName="Issue ID" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="Response.Id" ShouldFilterOnChange="False">
+                <uiisi:OperationEntityField.Metadata>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <uiisi:CustomFieldsPriority x:Key="CustomFieldsPriority">Default</uiisi:CustomFieldsPriority>
+                  </scg:Dictionary>
+                </uiisi:OperationEntityField.Metadata>
+              </uiisi:OperationEntityField>
+              <uiisi:OperationEntityField x:TypeArguments="x:String" x:Name="__ReferenceID4" ArgumentDirection="Out" ArgumentType="x:String" DataType="String" Description="The key of the issue." DisplayName="Issue key" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="False" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="Response.Key" ShouldFilterOnChange="False">
+                <uiisi:OperationEntityField.Metadata>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <uiisi:CustomFieldsPriority x:Key="CustomFieldsPriority">Default</uiisi:CustomFieldsPriority>
+                  </scg:Dictionary>
+                </uiisi:OperationEntityField.Metadata>
+              </uiisi:OperationEntityField>
+              <uiisi:OperationEntityField x:TypeArguments="x:String" x:Name="__ReferenceID5" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The summary." DisplayName="Summary" FormDataType="ExpressionTextBox" InArgumentValue="Bug 10" IsChildEntityField="True" IsCustomField="True" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="True" IsSelected="False" Location="Undefined" Name="body.fields.summary" Order="1" ShouldFilterOnChange="False">
+                <uiisi:OperationEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:String">Bug 10</InArgument>
+                </uiisi:OperationEntityField.ArgumentValue>
+                <uiisi:OperationEntityField.Metadata>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="AllowUserValues">False</x:Boolean>
+                    <x:Boolean x:Key="IsMultipleSelection">False</x:Boolean>
+                    <x:String x:Key="Type">string</x:String>
+                  </scg:Dictionary>
+                </uiisi:OperationEntityField.Metadata>
+                <uiisi:OperationEntityField.Value>
+                  <Literal x:TypeArguments="x:String">Bug 10</Literal>
+                </uiisi:OperationEntityField.Value>
+              </uiisi:OperationEntityField>
+              <uiisi:OperationEntityField x:TypeArguments="x:String" x:Name="__ReferenceID6" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The parent" DisplayName="Parent issue key " FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="True" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.fields.parent.key" Order="1" ShouldFilterOnChange="False">
+                <uiisi:OperationEntityField.Metadata>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="AllowUserValues">False</x:Boolean>
+                    <x:Boolean x:Key="IsMultipleSelection">False</x:Boolean>
+                    <x:String x:Key="Type">string</x:String>
+                  </scg:Dictionary>
+                </uiisi:OperationEntityField.Metadata>
+              </uiisi:OperationEntityField>
+              <uiisi:OperationEntityField x:TypeArguments="x:String" x:Name="__ReferenceID7" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The description." DisplayName="Description" FormDataType="ExpressionTextBox" InArgumentValue="Create bug" IsChildEntityField="True" IsCustomField="True" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.fields.description" Order="1" ShouldFilterOnChange="False">
+                <uiisi:OperationEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:String">Create bug</InArgument>
+                </uiisi:OperationEntityField.ArgumentValue>
+                <uiisi:OperationEntityField.Metadata>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="AllowUserValues">False</x:Boolean>
+                    <x:Boolean x:Key="IsMultipleSelection">False</x:Boolean>
+                    <x:String x:Key="Type">string</x:String>
+                  </scg:Dictionary>
+                </uiisi:OperationEntityField.Metadata>
+                <uiisi:OperationEntityField.Value>
+                  <Literal x:TypeArguments="x:String">Create bug</Literal>
+                </uiisi:OperationEntityField.Value>
+              </uiisi:OperationEntityField>
+              <uiisi:OperationEntityField x:TypeArguments="s:String[]" x:Name="__ReferenceID8" ArgumentDirection="In" ArgumentType="s:String[]" DataType="String[]" Description="Choose multiple values of flagged" DisplayName="Flagged" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="True" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.fields.flagged_Customfield10021[*].value" Order="0" ShouldFilterOnChange="False">
+                <uiisi:OperationEntityField.EnumValues>
+                  <scg:List x:TypeArguments="x:String" Capacity="1">
+                    <x:String>Impediment</x:String>
+                  </scg:List>
+                </uiisi:OperationEntityField.EnumValues>
+                <uiisi:OperationEntityField.Metadata>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="AllowUserValues">False</x:Boolean>
+                    <x:Boolean x:Key="IsMultipleSelection">True</x:Boolean>
+                    <x:String x:Key="Type">string</x:String>
+                    <scg:List x:TypeArguments="uibi:FieldDataSource" x:Key="AllowedValues" Capacity="4">
+                      <uibi:FieldDataSource Id="Impediment" Key="Impediment" Name="Impediment" />
+                    </scg:List>
+                  </scg:Dictionary>
+                </uiisi:OperationEntityField.Metadata>
+              </uiisi:OperationEntityField>
+              <uiisi:OperationEntityField x:TypeArguments="x:String" x:Name="__ReferenceID9" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The reporter." DisplayName="Reporter ID" FormDataType="ExpressionTextBox" InArgumentValue="Automation for Jira - 557058:f58131cb-b67d-43c7-b30d-6b58d40bd077" IsChildEntityField="True" IsCustomField="True" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="True" IsSelected="False" Location="Undefined" Name="body.fields.reporter.id" Order="0" ShouldFilterOnChange="False">
+                <uiisi:OperationEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:String">Automation for Jira - 557058:f58131cb-b67d-43c7-b30d-6b58d40bd077</InArgument>
+                </uiisi:OperationEntityField.ArgumentValue>
+                <uiisi:OperationEntityField.Metadata>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="AllowUserValues">False</x:Boolean>
+                    <x:Boolean x:Key="IsMultipleSelection">False</x:Boolean>
+                    <x:String x:Key="Type">string</x:String>
+                  </scg:Dictionary>
+                </uiisi:OperationEntityField.Metadata>
+                <uiisi:OperationEntityField.Value>
+                  <Literal x:TypeArguments="x:String">Automation for Jira - 557058:f58131cb-b67d-43c7-b30d-6b58d40bd077</Literal>
+                </uiisi:OperationEntityField.Value>
+              </uiisi:OperationEntityField>
+              <uiisi:OperationEntityField x:TypeArguments="x:String" x:Name="__ReferenceID10" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The development" DisplayName="Development" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="True" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.fields.development_Customfield10000" Order="0" ShouldFilterOnChange="False">
+                <uiisi:OperationEntityField.Metadata>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="AllowUserValues">False</x:Boolean>
+                    <x:Boolean x:Key="IsMultipleSelection">False</x:Boolean>
+                    <x:String x:Key="Type">string</x:String>
+                  </scg:Dictionary>
+                </uiisi:OperationEntityField.Metadata>
+              </uiisi:OperationEntityField>
+              <uiisi:OperationEntityField x:TypeArguments="s:String[]" x:Name="__ReferenceID11" ArgumentDirection="In" ArgumentType="s:String[]" DataType="String[]" Description="The labels." DisplayName="Labels" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="True" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.fields.labels[*]" Order="1" ShouldFilterOnChange="False">
+                <uiisi:OperationEntityField.Metadata>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="AllowUserValues">False</x:Boolean>
+                    <x:Boolean x:Key="IsMultipleSelection">True</x:Boolean>
+                    <x:String x:Key="Type">string</x:String>
+                  </scg:Dictionary>
+                </uiisi:OperationEntityField.Metadata>
+              </uiisi:OperationEntityField>
+              <uiisi:OperationEntityField x:TypeArguments="x:String" x:Name="__ReferenceID12" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The rank" DisplayName="Rank" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="True" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.fields.rank_Customfield10019" Order="0" ShouldFilterOnChange="False">
+                <uiisi:OperationEntityField.Metadata>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="AllowUserValues">False</x:Boolean>
+                    <x:Boolean x:Key="IsMultipleSelection">False</x:Boolean>
+                    <x:String x:Key="Type">string</x:String>
+                  </scg:Dictionary>
+                </uiisi:OperationEntityField.Metadata>
+              </uiisi:OperationEntityField>
+              <uiisi:OperationEntityField x:TypeArguments="x:String" x:Name="__ReferenceID13" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The Key of a linked issues." DisplayName="Linked Issues" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="True" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.update.issuelinks.outwardIssue.key" Order="0" ShouldFilterOnChange="False">
+                <uiisi:OperationEntityField.Metadata>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="AllowUserValues">False</x:Boolean>
+                    <x:Boolean x:Key="IsMultipleSelection">False</x:Boolean>
+                    <x:String x:Key="Type">string</x:String>
+                  </scg:Dictionary>
+                </uiisi:OperationEntityField.Metadata>
+              </uiisi:OperationEntityField>
+              <uiisi:OperationEntityField x:TypeArguments="x:String" x:Name="__ReferenceID14" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="Select or type a relationship for the linked issues." DisplayName="Linked Issues Relationship" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="True" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.update.issuelinks.type.name" Order="0" ShouldFilterOnChange="False">
+                <uiisi:OperationEntityField.Metadata>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="AllowUserValues">False</x:Boolean>
+                    <x:Boolean x:Key="IsMultipleSelection">False</x:Boolean>
+                    <x:String x:Key="Type">string</x:String>
+                  </scg:Dictionary>
+                </uiisi:OperationEntityField.Metadata>
+              </uiisi:OperationEntityField>
+              <uiisi:OperationEntityField x:TypeArguments="x:String" x:Name="__ReferenceID15" ArgumentDirection="In" ArgumentType="x:String" DataType="String" Description="The assignee." DisplayName="Assignee ID" FormDataType="ExpressionTextBox" IsChildEntityField="True" IsCustomField="True" IsDefault="False" IsDeletable="False" IsHidden="False" IsIdField="False" IsMandatory="False" IsSelected="False" Location="Undefined" Name="body.fields.assignee.id" Order="1" ShouldFilterOnChange="False">
+                <uiisi:OperationEntityField.Metadata>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="AllowUserValues">False</x:Boolean>
+                    <x:Boolean x:Key="IsMultipleSelection">False</x:Boolean>
+                    <x:String x:Key="Type">string</x:String>
+                  </scg:Dictionary>
+                </uiisi:OperationEntityField.Metadata>
+              </uiisi:OperationEntityField>
+            </scg:List>
+          </ujia:CreateIssue.SelectedFields>
+          <ujia:CreateIssue.TelemetryProperties>
+            <scg:Dictionary x:TypeArguments="uibi:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+          </ujia:CreateIssue.TelemetryProperties>
+        </ujia:CreateIssue>
+      </Sequence>
+    </Sequence>
   </Sequence>
 </Activity>

@@ -3,6 +3,7 @@
   "description": "Blank Process",
   "main": "Main.xaml",
   "dependencies": {
+    "ReporterForUiPath.Activities": "[3.0.1]",
     "UiPath.Excel.Activities": "[2.20.1]",
     "UiPath.Jira.Activities": "[2.4.1]",
     "UiPath.Jira.IntegrationService.Activities": "[6.0.2]",
@@ -15,7 +16,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.4.0.0",
-  "projectVersion": "1.0.136580216",
+  "projectVersion": "1.0.136651977",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,

@@ -69,6 +69,6 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ra:StartTest ContinueOnError="{x:Null}" ReportId="{x:Null}" SuiteId="{x:Null}" TagName="{x:Null}" TestDescription="{x:Null}" testId="{x:Null}" DisplayName="Start Test" sap:VirtualizedContainerService.HintSize="388,86.66666666666667" sap2010:WorkflowViewState.IdRef="StartTest_1" Priority="Low" TestName="Starting point" />
+    <ra:StartTest ContinueOnError="{x:Null}" ReportId="{x:Null}" SuiteId="{x:Null}" TagName="{x:Null}" TestDescription="{x:Null}" testId="{x:Null}" DisplayName="Start Test" sap:VirtualizedContainerService.HintSize="388,86.66666666666667" sap2010:WorkflowViewState.IdRef="StartTest_1" Priority="Low" TestName="Starting point......" />
   </Sequence>
 </Activity>

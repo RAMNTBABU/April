@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Create_Issue" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="883.3333333333334,1642" sap2010:WorkflowViewState.IdRef="Create_Issue_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:aj="clr-namespace:Atlassian.Jira;assembly=Atlassian.Jira" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ubt="clr-namespace:UiPath.BAF.Telemetry;assembly=UiPath.Jira" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uja="clr-namespace:UiPath.Jira.Activities;assembly=UiPath.Jira.Activities" xmlns:usa="clr-namespace:UiPath.Shared.Activities;assembly=UiPath.Jira.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Create_Issue" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="883.3333333333334,638.6666666666666" sap2010:WorkflowViewState.IdRef="Create_Issue_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:aj="clr-namespace:Atlassian.Jira;assembly=Atlassian.Jira" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ubt="clr-namespace:UiPath.BAF.Telemetry;assembly=UiPath.Jira" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uja="clr-namespace:UiPath.Jira.Activities;assembly=UiPath.Jira.Activities" xmlns:usa="clr-namespace:UiPath.Shared.Activities;assembly=UiPath.Jira.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="70">
       <x:String>Atlassian.Jira</x:String>
@@ -74,9 +74,11 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Create_Issue" sap:VirtualizedContainerService.HintSize="558,1577.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Create_Issue" sap:VirtualizedContainerService.HintSize="610.6666666666666,574" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ss:SecureString" Name="APi_Str" />
       <Variable x:TypeArguments="x:String" Default="https://cisco-jira.atlassian.net/" Name="Jira_Url" />
@@ -87,15 +89,32 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="496,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
-      <Assign.To>
-        <OutArgument x:TypeArguments="ss:SecureString">[APi_Str]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="ss:SecureString">[New System.net.NetworkCredential(string.Empty,"ATATT3xFfGF0Z37ToVX58tOCmaKpFdTeYcoizgyHpYzGSVJSD7pfaNgPmG0Vl3Fp6FuL4WY5Ex5UdlLkgzf4iEL6FIvxxZl6lxg81tmZFnPn0zUMI2lP5CfPiWXUSwP-j8TxG4HCVewf8-RG1-BRAAL1JHse7_jcUt0QCxEVY6LB9XPb3b3D6Ls=0D63A553").SecurePassword]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="496,54" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="548.6666666666666,54" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,196" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="ss:SecureString">[APi_Str]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="ss:SecureString">[New System.net.NetworkCredential(string.Empty,"ATATT3xFfGF0Z37ToVX58tOCmaKpFdTeYcoizgyHpYzGSVJSD7pfaNgPmG0Vl3Fp6FuL4WY5Ex5UdlLkgzf4iEL6FIvxxZl6lxg81tmZFnPn0zUMI2lP5CfPiWXUSwP-j8TxG4HCVewf8-RG1-BRAAL1JHse7_jcUt0QCxEVY6LB9XPb3b3D6Ls=0D63A553").SecurePassword]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="548.6666666666666,54" sap2010:WorkflowViewState.IdRef="CommentOut_1">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="538,638.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
@@ -161,77 +180,89 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <Sequence DisplayName="Get issue create bug" sap:VirtualizedContainerService.HintSize="496,1247.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <uja:JiraScope ClientID="{x:Null}" ClientSecret="{x:Null}" Connection="{x:Null}" ContinueOnError="{x:Null}" JiraConnection="{x:Null}" ApiToken="[APi_Str]" AuthenticationType="Api Token" DisplayName="Jira Scope" sap:VirtualizedContainerService.HintSize="434,1136.66666666667" sap2010:WorkflowViewState.IdRef="JiraScope_2" ServerURL="[Jira_Url]" UserName="[User_Name]">
-        <uja:JiraScope.Body>
-          <ActivityAction x:TypeArguments="usa:IObjectContainer">
-            <ActivityAction.Argument>
-              <DelegateInArgument x:TypeArguments="usa:IObjectContainer" Name="ScopeActivity" />
-            </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,1050.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
-              <Sequence.Variables>
-                <Variable x:TypeArguments="aj:Issue" Name="Issue_Output" />
-                <Variable x:TypeArguments="x:String" Name="Get_Issue_Var" />
-                <Variable x:TypeArguments="aj:JiraUser[]" Name="User_Ouptut" />
-                <Variable x:TypeArguments="x:String" Name="LPLAT_Number__Ouptut" />
-              </Sequence.Variables>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <uja:CreateIssue Components="{x:Null}" ContinueOnError="{x:Null}" ParentIssueKey="{x:Null}" CustomFields="[New Dictionary(of string, string) from {{“Severity”,“S4”}}]" DisplayName="Create Issue" sap:VirtualizedContainerService.HintSize="334,230.666666666667" sap2010:WorkflowViewState.IdRef="CreateIssue_1" Issue="[Issue_Output]" IssueDescription="Testing bot" IssueSummary="Testing in uipath bot" IssueType="Bug" ProjectKey="LPLAT">
-                <uja:CreateIssue.AdditionalFields>
-                  <InArgument x:TypeArguments="x:String" x:Key="Severity">none</InArgument>
-                </uja:CreateIssue.AdditionalFields>
-                <uja:CreateIssue.TelemetryProperties>
-                  <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
-                </uja:CreateIssue.TelemetryProperties>
-              </uja:CreateIssue>
-              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[Issue_Output.Key.ToString]" />
-              <Assign sap:VirtualizedContainerService.HintSize="334,61.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_3">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[LPLAT_Number__Ouptut]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">[Issue_Output.Key.ToString]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_2">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[Get_Issue_Var]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">[LPLAT_Number__Ouptut]</InArgument>
-                </Assign.Value>
-              </Assign>
-              <uja:GetIssue ContinueOnError="{x:Null}" Issue="{x:Null}" NumberOfAttachments="{x:Null}" NumberOfComments="{x:Null}" DisplayCounts="False" DisplayName="Get Issue" sap:VirtualizedContainerService.HintSize="334,84.6666666666667" sap2010:WorkflowViewState.IdRef="GetIssue_2" IssueKey="[LPLAT_Number__Ouptut]">
-                <uja:GetIssue.TelemetryProperties>
-                  <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
-                </uja:GetIssue.TelemetryProperties>
-              </uja:GetIssue>
-              <uja:FindUsers ContinueOnError="{x:Null}" MaxResults="{x:Null}" DisplayName="Find Users" sap:VirtualizedContainerService.HintSize="334,84.6666666666667" sap2010:WorkflowViewState.IdRef="FindUsers_1" Query="Tien Le" Users="[User_Ouptut]">
-                <uja:FindUsers.TelemetryProperties>
-                  <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
-                </uja:FindUsers.TelemetryProperties>
-              </uja:FindUsers>
-              <uja:AssignIssue ContinueOnError="{x:Null}" Assignee="[User_Ouptut(0)]" DisplayName="Assign Issue" sap:VirtualizedContainerService.HintSize="334,133.333333333333" sap2010:WorkflowViewState.IdRef="AssignIssue_1" IssueKey="[Get_Issue_Var]">
-                <uja:AssignIssue.TelemetryProperties>
-                  <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
-                </uja:AssignIssue.TelemetryProperties>
-              </uja:AssignIssue>
-            </Sequence>
-          </ActivityAction>
-        </uja:JiraScope.Body>
-        <uja:JiraScope.TelemetryProperties>
-          <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
-        </uja:JiraScope.TelemetryProperties>
-      </uja:JiraScope>
-    </Sequence>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="548.6666666666666,275.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="512,195.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="Get issue create bug" sap:VirtualizedContainerService.HintSize="450,84.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uja:JiraScope ClientID="{x:Null}" ClientSecret="{x:Null}" Connection="{x:Null}" ContinueOnError="{x:Null}" JiraConnection="{x:Null}" ApiToken="[APi_Str]" AuthenticationType="Api Token" DisplayName="Jira Scope" sap:VirtualizedContainerService.HintSize="484,1160.6666666666667" sap2010:WorkflowViewState.IdRef="JiraScope_2" ServerURL="[Jira_Url]" UserName="[User_Name]">
+              <uja:JiraScope.Body>
+                <ActivityAction x:TypeArguments="usa:IObjectContainer">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="usa:IObjectContainer" Name="ScopeActivity" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,1073.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="aj:Issue" Name="Issue_Output" />
+                      <Variable x:TypeArguments="x:String" Name="Get_Issue_Var" />
+                      <Variable x:TypeArguments="aj:JiraUser[]" Name="User_Ouptut" />
+                      <Variable x:TypeArguments="x:String" Name="LPLAT_Number__Ouptut" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uja:CreateIssue Components="{x:Null}" ContinueOnError="{x:Null}" ParentIssueKey="{x:Null}" CustomFields="[New Dictionary(of string, string) from {{“Severity”,“S4”}}]" DisplayName="Create Issue" sap:VirtualizedContainerService.HintSize="388,234.66666666666666" sap2010:WorkflowViewState.IdRef="CreateIssue_1" Issue="[Issue_Output]" IssueDescription="Testing bot" IssueSummary="Testing in uipath bot" IssueType="Bug" ProjectKey="LPLAT">
+                      <uja:CreateIssue.AdditionalFields>
+                        <InArgument x:TypeArguments="x:String" x:Key="Severity">none</InArgument>
+                      </uja:CreateIssue.AdditionalFields>
+                      <uja:CreateIssue.TelemetryProperties>
+                        <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+                      </uja:CreateIssue.TelemetryProperties>
+                    </uja:CreateIssue>
+                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[Issue_Output.Key.ToString]" />
+                    <Assign sap:VirtualizedContainerService.HintSize="334,61.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_3">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[LPLAT_Number__Ouptut]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[Issue_Output.Key.ToString]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[Get_Issue_Var]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[LPLAT_Number__Ouptut]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <uja:GetIssue ContinueOnError="{x:Null}" Issue="{x:Null}" NumberOfAttachments="{x:Null}" NumberOfComments="{x:Null}" DisplayCounts="False" DisplayName="Get Issue" sap:VirtualizedContainerService.HintSize="334,84.6666666666667" sap2010:WorkflowViewState.IdRef="GetIssue_2" IssueKey="[LPLAT_Number__Ouptut]">
+                      <uja:GetIssue.TelemetryProperties>
+                        <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+                      </uja:GetIssue.TelemetryProperties>
+                    </uja:GetIssue>
+                    <uja:FindUsers ContinueOnError="{x:Null}" MaxResults="{x:Null}" DisplayName="Find Users" sap:VirtualizedContainerService.HintSize="334,84.6666666666667" sap2010:WorkflowViewState.IdRef="FindUsers_1" Query="Tien Le" Users="[User_Ouptut]">
+                      <uja:FindUsers.TelemetryProperties>
+                        <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+                      </uja:FindUsers.TelemetryProperties>
+                    </uja:FindUsers>
+                    <uja:AssignIssue ContinueOnError="{x:Null}" Assignee="[User_Ouptut(0)]" DisplayName="Assign Issue" sap:VirtualizedContainerService.HintSize="334,133.333333333333" sap2010:WorkflowViewState.IdRef="AssignIssue_1" IssueKey="[Get_Issue_Var]">
+                      <uja:AssignIssue.TelemetryProperties>
+                        <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+                      </uja:AssignIssue.TelemetryProperties>
+                    </uja:AssignIssue>
+                  </Sequence>
+                </ActivityAction>
+              </uja:JiraScope.Body>
+              <uja:JiraScope.TelemetryProperties>
+                <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+              </uja:JiraScope.TelemetryProperties>
+            </uja:JiraScope>
+          </Sequence>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
   </Sequence>
 </Activity>
